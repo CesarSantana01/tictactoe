@@ -6,6 +6,8 @@ body{
     flex-wrap: wrap;
     margin: 0;
     padding: 0;
+    background-color: rgb(45, 17, 68);
+    overflow: hidden;
 }
 
 .scoreboard_container{
@@ -13,6 +15,7 @@ background-color: transparent;
 display: flex;
 flex-direction: column;
 
+gap: 20px;
 width: 25%;
 height: 100vh;
 }
@@ -31,11 +34,17 @@ height: 100vh;
 }
 
 #gameboard_title{
-background-color: yellow;
+font-size:clamp(20px, 30px,60px);
+margin-top: 20px;
+font-family:monospace;
+text-shadow: 0 0 20px rgb(88, 36, 192) ;
+
 
 }
 #gameboard{
-background-color: green;
+    margin-bottom: 20px;
+background-color: transparent;
+
 margin-top: 10%;
 aspect-ratio: 1/1;
 width: 95%;
@@ -43,15 +52,28 @@ width: 95%;
 display: grid;
 grid-template-columns: repeat(3,1fr);
 grid-template-rows: repeat(3,1fr);
+border: none;
+border-radius: 10px;
+}
 
+#gameboard>div{
+    border: 2px solid black;
+    border-radius: 10px;
+    border-collapse: collapse;
+    transition: ease .3s;
+    background-color: rgb(88, 36, 192);
+    
+}
 
-
-
+#gameboard>div:hover{
+    transform: scale(1.05) rotate(8deg) ;
+    box-shadow: 0 0 40px rgb(43, 7, 50) inset ;
 }
 
 
+
 .player1{
-    background-color: blue;
+    background-color: rgb(98, 75, 187);
     font-size: 30px;
 
     display: flex;
@@ -60,9 +82,11 @@ grid-template-rows: repeat(3,1fr);
     align-items: center;
     
     height: 50%;
+    box-shadow: 0 0 20px black;
+    border-radius: 10px;
 }
 .player2{
-    background-color: red;
+    background-color: rgb(152, 94, 223);
     font-size: 30px;
 
     display: flex;
@@ -70,6 +94,8 @@ grid-template-rows: repeat(3,1fr);
     justify-content: center;
     align-items: center;
     height: 50%;
+    box-shadow: 0 0 20px black;
+    border-radius: 10px;
     
 }
 
@@ -77,12 +103,77 @@ grid-template-rows: repeat(3,1fr);
 
 }
 
-.box1{
- 
+.box{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+    font-family: sans-serif;
+    font-size: 5rem;
 }
-.box5{
+
+.winningScreen{
+    position: fixed; /* Sit on top of the page content */
+    display:none; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.307);
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer; /* Add a pointer on hover */
+    backdrop-filter: blur(6px);
     
 }
-.box9{
+.winningScreen .container{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  border-radius: 10px;
+  width: 60%;
+  height: 30%;
+  background-color: rgb(90, 54, 162);
+  box-shadow: 0 0 10px rgb(0, 0, 0) ;
+    
+}
+p{
+   
+    text-align: center;
+    align-self: center;
+    margin: 20px;
+    font-size: 3rem;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.362);
+}
+.playerHover{
+transition: .3s ease;
+}
+
+.playerHover:hover{
+transform: scale(1.1);
+background-color: rgb(220, 78, 248);
+}
+
+.playAgain{
+    padding:.5rem;
+    width: 70%;
+    height: 30%;
+    border-radius: 8px;
+    background-color: rgb(58, 27, 120);
+    border: none;
+   transition: .5s ease;
+   font: 1em;
+}
+
+.playAgain:hover{
+    background-color: rgb(79, 40, 157);
+    box-shadow: 0 0 10px rgb(207, 6, 247) inset;
+    transform: scale(1.1);
    
 }
